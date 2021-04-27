@@ -1,0 +1,40 @@
+<div *ngIf="dataEmployee; else templateEmployee">
+    <div class="card mt-4">
+        <div class="card-header">
+            <b>Employee Details</b>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <b>Name:</b>
+                    <p>{{ dataEmployee.name }}</p>
+                </li>
+                <li class="list-group-item">
+                    <b>Email:</b>
+                    <p>{{ dataEmployee.email }}</p>
+                </li>
+                <li class="list-group-item">
+                    <b>Start Date:</b>
+                    <p>{{ dataEmployee.start_date }}</p>
+                </li>
+            </ul>
+        </div>
+        <!-- role="group" mantener la accesibilidad -->
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-outline-primary m-1" (click)="onGoToEdit()">Edit</button>
+            <button type="button" class="btn btn-outline-danger m-1" (click)="onGoToDelete()">Delete</button>
+        </div>
+    </div>
+</div>
+<ng-template #templateEmployee style="justify-content: center;">
+    <div class="mt-3">
+        <p>No se encontraron datos</p>
+    </div>
+    <!-- <div class="d-flex justify-content-center">...</div> -->
+</ng-template>
+
+
+
+<button type="button" class="btn btn-outline-secondary mt-3 btn-sm" (click)="onGoToBack()">
+    ← Go Back to List
+</button>
