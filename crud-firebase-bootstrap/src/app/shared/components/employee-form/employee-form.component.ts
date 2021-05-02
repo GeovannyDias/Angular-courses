@@ -10,7 +10,7 @@ import { EmployeesService } from '../../services/employees.service';
   styleUrls: ['./employee-form.component.scss']
 })
 export class EmployeeFormComponent implements OnInit {
-  private isEmail = /\S+@\S+\.\S+/;
+  private isEmail = /\S+@\S+\.\S+/; // Expresión regular para validar email
   myForm: FormGroup;
   private initForm() {
     this.myForm = this.formBuilder.group({
@@ -44,6 +44,13 @@ export class EmployeeFormComponent implements OnInit {
     } else {
       this.myForm.patchValue(this.dataEmployee);
     }
+  }
+
+  // VALIDA LOS CAMPOS DEL FORMULARIO
+  isValidField(field: string) {
+    const validatedField = this.myForm.get(field);
+    return (!validatedField.valid && validatedField.touched) ? 'is-invalid' :
+      validatedField.touched ? 'is-valid' : '';
   }
 
   async onSave() {

@@ -3,6 +3,7 @@ import { NavigationExtras, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EmployeeI } from 'src/app/shared/models/employee.interface';
 import { EmployeesService } from 'src/app/shared/services/employees.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-list',
@@ -37,10 +38,34 @@ export class ListComponent implements OnInit {
   }
 
   async deleteEmployee(id: string) {
-    await this.employeesService.deleteEmployee(id).then(() => {
-      console.log('Deleted employee...');
-    }).catch(error => console.log('Error delete...', error));
+    await Swal.fire({
+      title: '¿Está seguro?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Sí, eliminar!',
+      cancelButtonText: 'Cancelar',
+      preConfirm: () => {
+        setTimeout(() => {
+          return true;
+        }, 1000);
+      }
+    }).then(async result => {
+      if (result.isConfirmed) {
+        await this.employeesService.deleteEmployee(id).then(() => {
+          Swal.fire(
+            '¡Eliminado!',
+            'El registro ha sido eliminado.',
+            'success'
+          );
+          console.log('Deleted employee...');
+        }).catch(error => console.log('Error delete...', error));
+      }
+    });
   }
+
 
   onGoToEdit(employee: any) {
     this.navigationExtra.state.data = employee;

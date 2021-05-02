@@ -28,8 +28,22 @@ importar bootstrap en script agular.json
     "node_modules/bootstrap/dist/js/bootstrap.min.js"
 ]
 
+
 ```
 
+## Versiones
+
+```
+
+    "bootswatch": "^4.6.0",
+    "bootstrap": "^4.6.0",
+    "jquery": "^3.6.0",
+    "@popperjs/core": "^2.9.2",
+
+    "@angular/fire": "^6.1.4",
+    "firebase": "^7.0 || ^8.0",
+
+```
 ## Componentes, Modules
 
 ```
@@ -71,16 +85,47 @@ https://fireship.io/snippets/install-angularfire/
 
 ```
 
-## 
+## [ngClass] vs. [class]
+
+```
+Usando [ngClass] se puede aplicar múltiples clases de una manera realmente conveniente. Incluso puede aplicar una función que devolverá un objeto de clases. [class. permite aplicar solo una clase (por supuesto, se puede usar class. Algunas veces pero se ve muy mal).
+
+<div [class.extra-sparkle]="isDelightful">
+<div [ngClass]="{'extra-sparkle': isDelightful}">
+
+<div [ngClass]="{'extra-sparkle': isDelightful,'extra-glitter':isGlitter}">
+
+<div [ngClass]="a === b ? 'class1' : 'class2'">
 
 ```
 
+## ng-class vs. ng-style
 
 ```
+ng-style:
 
-## 
+ng-style se usa para interpolar el objeto javascript en el atributo style , no en la clase css.
+La siguiente directiva se traducirá a style = "color: red"
 
-```
+    ng-style="{color: 'red'}"
+
+Hay un caso de uso más para ng-style. Si desea interpolar algo en el atributo de estilo, debería considerar usar ng-style. De lo contrario, eso no funcionaría antes de Internet Explorer 11 como documentación sugiere.
+
+Entonces, en lugar de usar estilo:
+
+    style="width: {{progress}}"
+
+Use ng-style:
+
+    ng-style="{'width':progress}"
+
+
+ng-class:
+
+Y la directiva ng-class traduce su objeto en clase atributo.
+Lo siguiente se traducirá a clase = "eliminado" cuando se borra la variable es ¡cierto =.
+
+    ng-class="{'deleted': isDeleted}"
 
 
 ```

@@ -1,21 +1,52 @@
 <form class="mt-4 col-md-8 offset-md-2" (ngSubmit)="onSave()" [formGroup]="myForm">
     <div class="form-row">
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Name" formControlName="name">
+            <input type="text" class="form-control" placeholder="Name" formControlName="name"
+                [ngClass]="isValidField('name')">
+            <div class="invalid-feedback">
+                <span *ngIf="myForm.get('name').errors?.required">
+                    This field is required.
+                </span>
+            </div>
         </div>
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Last Name" formControlName="last_name">
+            <input type="text" class="form-control" placeholder="Last Name" formControlName="last_name"
+                [ngClass]="isValidField('last_name')">
+            <div class="invalid-feedback">
+                <span *ngIf="myForm.get('last_name').errors?.required">
+                    This field is required.
+                </span>
+            </div>
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <input type="email" class="form-control" placeholder="Email" formControlName="email">
+            <input type="email" class="form-control" placeholder="Email" formControlName="email"
+                [ngClass]="isValidField('email')">
+            <div class="invalid-feedback">
+                <span *ngIf="myForm.get('email').errors?.required">
+                    This field is required.
+                </span>
+                <!-- Solo valida hasta el '@' -->
+                <!-- <span *ngIf="myForm.get('email').errors?.email">
+                    Enter a valid email.
+                </span> -->
+                <span *ngIf="myForm.get('email').errors?.pattern">
+                    Enter a valid email.
+                </span>
+            </div>
         </div>
         <div class="form-group col-md-6">
-            <input type="date" class="form-control" placeholder="Start Date 02/10/2021" formControlName="start_date">
+            <input type="date" class="form-control" placeholder="Start Date 02/10/2021" formControlName="start_date"
+                [ngClass]="isValidField('start_date')">
+            <div class="invalid-feedback">
+                <span *ngIf="myForm.get('start_date').errors?.required">
+                    This field is required.
+                </span>
+            </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-secondary btn-block">Save</button>
+    <button type="submit" class="btn btn-secondary btn-block" [disabled]="!myForm.valid">Save</button>
 </form>
 
 <button type="button" class="btn btn-outline-secondary mt-3 btn-sm" (click)="onGoToBack()">
