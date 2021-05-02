@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "crud-angular-1b068": {
+      "hosting": {
+        "crud-firebase-bootstrap": [
+          "crud-angular-1b068"
+        ]
+      }
+    }
+  }
+}

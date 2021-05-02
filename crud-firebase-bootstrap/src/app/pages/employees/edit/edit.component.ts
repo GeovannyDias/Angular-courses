@@ -1,5 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
+// @Component({
+//   template: `<app-employee-form></app-employee-form>`,
+// })
+/*
+se puede eliminar los ficheros que no se necesita:
+
+edit.component.html
+edit.component.scss
+
+este ts sirve solo como contenedor ya que solo se le llama
+a través de la ruta
+*/
 
 @Component({
   selector: 'app-edit',
@@ -7,17 +19,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
-  dataEmployee: any;
+  constructor() { }
+  ngOnInit(): void { }
 
-  constructor(
-    private router: Router
-  ) {
-    const navigation = this.router.getCurrentNavigation();
-    this.dataEmployee = navigation.extras.state;
-    console.log('this.dataEmployee', this.dataEmployee);
-  }
-
-  ngOnInit(): void {
-  }
 
 }

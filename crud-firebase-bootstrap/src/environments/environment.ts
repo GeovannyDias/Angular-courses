@@ -6,6 +6,15 @@ export const environment = {
   production: false
 };
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyDS_EzSOXHXclcrowjgtDy_8E9MgXna3-g",
+  authDomain: "crud-angular-1b068.firebaseapp.com",
+  projectId: "crud-angular-1b068",
+  storageBucket: "crud-angular-1b068.appspot.com",
+  messagingSenderId: "323105028619",
+  appId: "1:323105028619:web:4fa88fa505807207d6650e"
+};
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

@@ -45,9 +45,28 @@ ng g m pages/employees/new --module app --route new
 ng g m pages/employees/details --module app --route details
 ng g m pages/employees/edit --module app --route edit
 
+Encapsular en un componente:
+
+ng g c shared/components/employee-form --module app --skipTests
+ng g m shared/components/employee-form --module app
+
 Servicios:
 
  ng g s services/employees --skipTests
+
+Instalar Firebase a través de Schematics:
+
+Primero debe estar creado el proyecto de firebase, en enviroment.ts
+En la consola se debe estar logueado en firebase con las herramientas de firebase-tools
+ya que solicitara seleccionar el proyecto
+
+ng add @angular/fire
+
+
+https://github.com/angular/angularfire/blob/master/docs/install-and-setup.md
+https://fireship.io/snippets/install-angularfire/
+
+
 
 
 ```

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { EmployeeI } from 'src/app/shared/models/employee.interface';
+import { EmployeesService } from 'src/app/shared/services/employees.service';
 
 @Component({
   selector: 'app-list',
@@ -14,44 +17,29 @@ export class ListComponent implements OnInit {
     }
   }
 
-  dataEmployees$: any = [
-    {
-      id: '1',
-      name: 'Geovanny1',
-      email: 'geo@geo.com',
-      start_date: '01/02/2021'
-    },
-    {
-      id: '2',
-      name: 'Geovanny2',
-      email: 'geo@geo.com',
-      start_date: '01/02/2021'
-    },
-    {
-      id: '3',
-      name: 'Geovanny3',
-      email: 'geo@geo.com',
-      start_date: '01/02/2021'
-    },
-    {
-      id: '4',
-      name: 'Geovanny4',
-      email: 'geo@geo.com',
-      start_date: '01/02/2021'
-    },
-    {
-      id: '5',
-      name: 'Geovanny5',
-      email: 'geo@geo.com',
-      start_date: '01/02/2021'
-    }
-  ];
+  dataEmployees$: EmployeeI[];
+  emp_subs: Subscription;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private employeesService: EmployeesService,
   ) { }
 
   ngOnInit(): void {
+    this.getEmployees();
+  }
+
+  getEmployees() {
+    if (this.emp_subs) this.emp_subs.unsubscribe();
+    this.emp_subs = this.employeesService.getEmployees().subscribe(data => {
+      this.dataEmployees$ = data;
+    });
+  }
+
+  async deleteEmployee(id: string) {
+    await this.employeesService.deleteEmployee(id).then(() => {
+      console.log('Deleted employee...');
+    }).catch(error => console.log('Error delete...', error));
   }
 
   onGoToEdit(employee: any) {
@@ -65,9 +53,5 @@ export class ListComponent implements OnInit {
     this.router.navigate(['details'], this.navigationExtra);
   }
 
-  onGoToDelete(employee: any) {
-    // this.router.navigate(['/delete']);
-    console.log('Delete');
-  }
 
 }

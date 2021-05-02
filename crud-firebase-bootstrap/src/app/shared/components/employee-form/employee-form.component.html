@@ -1,0 +1,23 @@
+<form class="mt-4 col-md-8 offset-md-2" (ngSubmit)="onSave()" [formGroup]="myForm">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Name" formControlName="name">
+        </div>
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Last Name" formControlName="last_name">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <input type="email" class="form-control" placeholder="Email" formControlName="email">
+        </div>
+        <div class="form-group col-md-6">
+            <input type="date" class="form-control" placeholder="Start Date 02/10/2021" formControlName="start_date">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-secondary btn-block">Save</button>
+</form>
+
+<button type="button" class="btn btn-outline-secondary mt-3 btn-sm" (click)="onGoToBack()">
+    ← Go Back to List
+</button>

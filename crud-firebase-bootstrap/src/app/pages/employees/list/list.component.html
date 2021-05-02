@@ -12,7 +12,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let employee of dataEmployees$">
-                <th scope="row">{{ employee.name }}</th>
+                <th scope="row">{{ employee.name }} {{ employee.last_name }}</th>
                 <td>{{ employee.email }}</td>
                 <td>{{ employee.start_date }}</td>
                 <td class="btn-group d-none d-sm-block" role="group">
@@ -22,7 +22,7 @@
                     <button type="button" class="btn btn-outline-secondary m-1" (click)="onGoToDetails(employee)">
                         See
                     </button>
-                    <button type="button" class="btn btn-outline-danger m-1" (click)="onGoToDelete(employee)">
+                    <button type="button" class="btn btn-outline-danger m-1" (click)="deleteEmployee(employee.id)">
                         Delete
                     </button>
                 </td>
@@ -30,10 +30,3 @@
         </tbody>
     </table>
 </div>
-
-
-
-
-
-
-

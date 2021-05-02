@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { EmployeeI } from 'src/app/shared/models/employee.interface';
+import { EmployeesService } from 'src/app/shared/services/employees.service';
 
 @Component({
   selector: 'app-details',
@@ -12,14 +14,15 @@ export class DetailsComponent implements OnInit {
       data: null // employee
     }
   }
-  dataEmployee: any;
+  dataEmployee: EmployeeI;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private employeesService: EmployeesService,
   ) {
     const navigation = this.router.getCurrentNavigation();
     this.dataEmployee = navigation?.extras?.state?.data;
-    console.log('this.dataEmployee', this.dataEmployee);
+    // console.log('this.dataEmployee', this.dataEmployee);
   }
 
   ngOnInit(): void {
@@ -38,10 +41,13 @@ export class DetailsComponent implements OnInit {
     // console.log('employee', employee);
   }
 
-  onGoToDelete() {
-    // this.router.navigate(['/delete']);
-    console.log('Delete');
+  async deleteEmployee(id: string) {
+    await this.employeesService.deleteEmployee(id).then(() => {
+      console.log('Deleted employee...');
+      this.onGoToBack();
+    }).catch(error => console.log('Error delete...', error));
   }
+
 
   onGoToBack() {
     this.router.navigate(['list']);

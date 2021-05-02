@@ -7,7 +7,7 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <b>Name:</b>
-                    <p>{{ dataEmployee.name }}</p>
+                    <p>{{ dataEmployee.name }} {{ dataEmployee.last_name }}</p>
                 </li>
                 <li class="list-group-item">
                     <b>Email:</b>
@@ -22,7 +22,8 @@
         <!-- role="group" mantener la accesibilidad -->
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-outline-primary m-1" (click)="onGoToEdit()">Edit</button>
-            <button type="button" class="btn btn-outline-danger m-1" (click)="onGoToDelete()">Delete</button>
+            <button type="button" class="btn btn-outline-danger m-1"
+                (click)="deleteEmployee(dataEmployee.id)">Delete</button>
         </div>
     </div>
 </div>
