@@ -1,6 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
-// importar el theme que se quiere utilizar
+// importar el theme que se quiere utilizar (Bootswatch)
 @import "~bootswatch/dist/cosmo/variables";
 @import "~bootstrap/scss/bootstrap";
 @import "~bootswatch/dist/cosmo/bootswatch";
+
+// Estilos genericos para toda la app
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    // color: #333;
+    background: #fff;
+    color: #111;
+    line-height: 1.6; // (recommended)
+    // line-height: normal;
+}
+
+// box-sizing
+// Define cómo se calcula el ancho y el alto de un elemento: ¿deben incluir relleno y bordes, o no?
+
+// box-sizing: border-box;
+// Esta propiedad nos permite incluir el relleno y el borde en el ancho y alto total de un elemento.
+// Si establece box-sizing: border-box; en un elemento, el relleno y el borde se incluyen en el ancho y el alto:

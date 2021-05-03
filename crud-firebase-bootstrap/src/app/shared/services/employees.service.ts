@@ -12,7 +12,7 @@ export class EmployeesService {
   private employees: Observable<EmployeeI[]>;
 
   constructor(
-    private db: AngularFirestore
+    private db: AngularFirestore,
   ) { }
 
   getEmployees() {

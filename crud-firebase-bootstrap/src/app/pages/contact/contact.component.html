@@ -1,0 +1,83 @@
+<form novalidate class="mt-4 col-md-8 offset-md-2" (ngSubmit)="onSave()" [formGroup]="myForm">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="nameInput">Name:</label>
+            <input type="text" class="form-control" placeholder="Name" formControlName="name"
+                [ngClass]="isValidField('name')">
+            <div class="invalid-feedback">
+                <span *ngIf="myForm.get('name').errors?.required">
+                    * This field is required.
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="lastNameInput">Last Name:</label>
+            <input type="text" id="lastNameInput" class="form-control" placeholder="Last Name"
+                formControlName="last_name" [ngClass]="isValidField('last_name')">
+            <div class="invalid-feedback">
+                <span *ngIf="myForm.get('last_name').errors?.required">
+                    * This field is required.
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="emailInput">Email:</label>
+        <input type="email" id="emailInput" class="form-control" placeholder="Email" formControlName="email"
+            [ngClass]="isValidField('email')">
+        <div class="invalid-feedback">
+            <span *ngIf="myForm.get('email').errors?.required">
+                * This field is required.
+            </span>
+            <!-- Solo valida hasta el '@' -->
+            <!-- <span *ngIf="myForm.get('email').errors?.email">
+                    Enter a valid email.
+                </span> -->
+            <span *ngIf="myForm.get('email').errors?.pattern">
+                Enter a valid email.
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="phoneInput">Phone Number:</label>
+        <input type="text" id="phoneInput" class="form-control" placeholder="Phone Number" formControlName="phone"
+            [ngClass]="isValidField('phone')">
+
+        <div class="invalid-feedback">
+            <span *ngIf="myForm.get('phone').errors?.required">
+                * This field is required.
+            </span>
+            <span *ngIf="myForm.get('phone').errors?.pattern; else onLength">
+                * Enter only numbers.
+            </span>
+            <ng-template #onLength>
+                <span *ngIf="myForm.get('phone').errors?.minlength">
+                    * Ingrese un número valido Ej: 02 4123123 o 09123456789. &nbsp;
+                </span>
+                <span *ngIf="myForm.get('phone').errors?.maxlength">
+                    * Ingrese máximo 10 números.
+                </span>
+            </ng-template>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="msgTextarea">Message:</label>
+        <textarea id="msgTextarea" rows="4" class="form-control" formControlName="message"
+            [ngClass]="isValidField('message')"></textarea>
+        <div class="invalid-feedback">
+            <span *ngIf="myForm.get('message').errors?.required">
+                * This field is required.
+            </span>
+            <span *ngIf="myForm.get('message').errors?.minlength">
+                * Ingrese informació valida. &nbsp;
+            </span>
+            <!-- maxLength → maxlength → Cambiar L mayúscula por minúscula -->
+            <span *ngIf="myForm.get('message').errors?.maxlength">
+                * Puede ingresar hasta un máximo de 700 caracteres.
+                <!-- {{myForm.get('message').errors?.maxlength?.requiredLength}} -->
+            </span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-secondary btn-block" [disabled]="!myForm.valid">Send</button>
+</form>

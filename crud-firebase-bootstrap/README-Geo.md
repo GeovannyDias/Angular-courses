@@ -1,3 +1,7 @@
+# CURSO 1
+
+* **https://www.youtube.com/watch?v=nEfemck6iNk&t=3791s*
+
 # Crud Firebase Bootstrap (Angular 11)
 
 ## bootswatch
@@ -52,7 +56,7 @@ ng g c shared/components/header --module app --skipTests (Componente)
 ng g m shared/components/header --module app (Módulo)
 
 
-Páginas con rutas y módulos:
+Páginas módulos, ruta y componente:
 
 ng g m pages/employees/list --module app --route list
 ng g m pages/employees/new --module app --route new
@@ -129,25 +133,55 @@ Lo siguiente se traducirá a clase = "eliminado" cuando se borra la variable es 
 
 
 ```
+# CURSO 2
 
-## 
+# Angular 11 y Firebase, bootstrap 4 tutorial 🅰 Curso de Angular 11 en Español
+
+## Formulario de contactos
+
+* **https://www.youtube.com/watch?v=aXYN4WUR-b0&t=470s*
+```
+Páginas módulos, ruta y componente:
+
+ng g m pages/home --module app --route home
+ng g m pages/contact --module app --route contact
+
+Files:
+
+shared/models
+shared/services
+
+
+GUARDS:
+
+Validar si el usuario esta llenando información en un formulario
+y di cambia de pantalla le notifique que perdera la información
+
+ng g guard shared/guards/contact --skipTests
+
 
 ```
 
+## Hot Module Replacement (HMR)
+
+```
+Reemplazo de módulos activos
+
+Se recargue solo la parte de la aplicación que fue modificada.
+
+ng serve --hmr
 
 ```
 
-## 
+## NUEVA RUTA
 
 ```
-
-
-```
-
-## 
-
-```
-
+// Nueva ruta (si no hay ninguna ruta se direcciona a la ruta /home)
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
 
 ```
 
